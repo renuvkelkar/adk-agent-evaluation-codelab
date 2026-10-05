@@ -1,0 +1,29 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2026-10-05T20:16:11+01:00",
+  "id": "evaluate-test-google-adk-agent",
+  "duration": 0,
+  "title": "Evaluate and test an AI agent with Google ADK",
+  "summary": "Evaluate and test an AI agent with Google ADK.",
+  "source": "CODELAB.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "ai",
+    "google-adk",
+    "evaluation"
+  ],
+  "tags": [
+    "evaluation",
+    "gemini",
+    "google-adk",
+    "testing",
+    "web"
+  ],
+  "url": "evaluate-test-google-adk-agent"
+}
