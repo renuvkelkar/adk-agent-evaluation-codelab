@@ -769,5 +769,90 @@ python -m lab.live evaluate --repeats 1
   <script src="assets/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
 
+
+<style>
+google-codelab-step pre {
+  position: relative;
+  padding-top: 48px !important;
+}
+
+.codelab-copy-button {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 1px solid #8ab4f8;
+  border-radius: 6px;
+  padding: 6px 12px;
+  color: #ffffff;
+  background: #1a73e8;
+  font: 500 13px Roboto, Arial, sans-serif;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.codelab-copy-button:hover {
+  background: #174ea6;
+}
+
+.codelab-copy-button.copied {
+  background: #188038;
+}
+</style>
+
+<script>
+(function () {
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    document.execCommand("copy");
+    area.remove();
+    return Promise.resolve();
+  }
+
+  function addCopyButtons() {
+    document.querySelectorAll("google-codelab-step pre").forEach(function (block) {
+      if (block.querySelector(".codelab-copy-button")) return;
+
+      const button = document.createElement("button");
+      button.className = "codelab-copy-button";
+      button.type = "button";
+      button.textContent = "Copy code";
+
+      button.addEventListener("click", function () {
+        const code = block.querySelector("code");
+        const text = code ? code.innerText : block.innerText;
+
+        copyText(text).then(function () {
+          button.textContent = "Copied!";
+          button.classList.add("copied");
+
+          setTimeout(function () {
+            button.textContent = "Copy code";
+            button.classList.remove("copied");
+          }, 1600);
+        });
+      });
+
+      block.appendChild(button);
+    });
+  }
+
+  window.addEventListener("load", function () {
+    addCopyButtons();
+    setTimeout(addCopyButtons, 500);
+    setTimeout(addCopyButtons, 1500);
+  });
+})();
+</script>
+
 </body>
 </html>
